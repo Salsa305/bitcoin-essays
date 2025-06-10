@@ -1,15 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8">
   <title>Essay Final Drafts</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      --bg: #f9f9fb;
+      --primary: #1e1e2f;
+      --accent: #4f46e5;
+      --link-hover: #3730a3;
+      --card-bg: #ffffff;
+      --border: #e0e0e0;
+      --shadow: rgba(0, 0, 0, 0.05) 0px 4px 12px;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg);
+      color: var(--primary);
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+
+    h1, h2 {
+      color: var(--accent);
+    }
+
+    a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    a:hover {
+      color: var(--link-hover);
+      text-decoration: underline;
+    }
+
+    .section {
+      background: var(--card-bg);
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      box-shadow: var(--shadow);
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    ul li {
+      margin-bottom: 0.5rem;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
+
   <h1>Final Drafts</h1>
 
-  <h2>Advocacy Project (AP)</h2>
-  <p><a href="Essays/AP-Drafts/final.html">View Final Draft</a></p>
+  <div class="section">
+    <h2>Contextual Project (CP)</h2>
+    <p><a href="Essays/CP-Drafts/final.html">View Final Draft</a></p>
+  </div>
 
-  <h2>Contextual Project (CP)</h2>
-  <p><a href="Essays/CP-Drafts/final.html">View Final Draft</a></p>
+  <div class="section">
+    <h2>Advocacy Project (AP)</h2>
+    <p><a href="Essays/AP-Drafts/final.html">View Final Draft</a></p>
+  </div>
+
+  <div class="section">
+    <h2>Rough Drafts</h2>
+    <ul>
+      <li><a href="Essays/CP-Drafts/draft1.html">CP Draft 1</a></li>
+      <li><a href="Essays/CP-Drafts/draft2.html">CP Draft 2</a></li>
+      <li><a href="Essays/AP-Drafts/draft1.html">AP Draft 1</a></li>
+      <li><a href="Essays/AP-Drafts/draft2.html">AP Draft 2</a></li>
+    </ul>
+  </div>
+
 </body>
 </html>
