@@ -33,7 +33,8 @@ See https://github.com/adobe-type-tools/cmap-resources
 
     <link rel="stylesheet" href="viewer.css">
       <!-- Start of Custom CSS for Minimal Viewer -->
-    <style>
+    <!-- Start of Custom CSS for Minimal Viewer (No Command+F) -->
+  <style>
     /* Global reset for containers to ensure no extra space */
     #outerContainer, #mainContainer, #viewerContainer {
       position: absolute !important;
@@ -45,8 +46,8 @@ See https://github.com/adobe-type-tools/cmap-resources
       padding: 0 !important;
       width: 100% !important;
       height: 100% !important;
-      overflow: auto !important; /* Keep scrolling for long documents */
-      overscroll-behavior: none; /* Prevents scroll chaining on some browsers */
+      overflow: hidden !important; /* Force no scrolling on these containers */
+      overscroll-behavior: none !important; /* Prevents scroll chaining on some browsers */
     }
 
     /* Hide all UI elements including toolbars, sidebars, findbar, etc. */
@@ -57,7 +58,7 @@ See https://github.com/adobe-type-tools/cmap-resources
     #loadingBar,
     #overlayContainer,
     #findbar,
-    #printServiceExtension { /* Hide print service prompt */
+    #printServiceExtension {
       display: none !important;
     }
 
@@ -74,18 +75,17 @@ See https://github.com/adobe-type-tools/cmap-resources
         margin: 0 !important; /* Remove margins around individual pages */
         border: none !important; /* Remove borders around pages */
         box-shadow: none !important; /* Remove any shadows around pages */
-        /* Disable pointer events to prevent accidental drag/zoom, if possible */
-        pointer-events: none !important;
+        pointer-events: none !important; /* Disables all mouse/touch interaction on the canvas */
     }
 
-    /* Additional styles to prevent zoom/pan if the above doesn't fully work */
+    /* Aggressive attempts to disable all user interaction within the iframe */
     html, body {
-        overflow: hidden !important; /* Try to disable scrolling on the viewer HTML itself */
-        touch-action: none !important; /* Disable touch gestures like pinch-to-zoom */
-        user-select: none !important; /* Disable text selection (might affect Command+F, test carefully) */
-        -webkit-user-select: none !important;
-        -moz-user-select: none !important;
-        -ms-user-select: none !important;
+        overflow: hidden !important; /* Prevents scrolling within the iframe itself */
+        touch-action: none !important; /* Disables all touch gestures (pinch-to-zoom, pan) */
+        user-select: none !important; /* Disables text selection and often helps prevent unwanted pan/zoom */
+        -webkit-user-select: none !important; /* For Webkit browsers */
+        -moz-user-select: none !important; /* For Firefox */
+        -ms-user-select: none !important; /* For Edge/IE */
     }
   </style>
   <!-- End of Custom CSS -->
