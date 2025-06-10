@@ -1,0 +1,52 @@
+/* style.css */
+
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers items horizontally */
+  margin: 0;
+  padding: 20px;
+  background-color: #f0f0f0; /* Light grey background for the page */
+  font-family: sans-serif; /* Basic font for better readability */
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+.pdf-viewer-wrapper {
+  /* Define the size for the PDF viewer iframe */
+  width: 8.5in; /* Or 816px for US Letter (96 DPI approx) */
+  height: 11in; /* Or 1056px for US Letter (96 DPI approx) */
+  max-width: 90vw; /* Make it responsive: don't exceed 90% of viewport width */
+  max-height: 90vh; /* Don't exceed 90% of viewport height */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); /* Stronger shadow */
+  border: none; /* No border for the wrapper */
+  overflow: hidden; /* Hide any overflow from the iframe */
+  margin-bottom: 20px;
+  background-color: white; /* Ensures a white background if the PDF viewer isn't fully loaded */
+}
+
+.pdf-viewer-wrapper iframe {
+  width: 100%;
+  height: 100%;
+  border: none; /* Remove iframe default border */
+  display: block;
+}
+
+p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+p a {
+  margin: 0 10px;
+  text-decoration: none;
+  color: #007bff;
+}
+
+p a:hover {
+  text-decoration: underline;
+}
