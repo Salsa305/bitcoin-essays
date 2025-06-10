@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <!--
 Copyright 2012 Mozilla Foundation
 
@@ -30,6 +30,20 @@ See https://github.com/adobe-type-tools/cmap-resources
 <!-- This snippet is used in production (included from viewer.html) -->
 <link rel="resource" type="application/l10n" href="locale/locale.json">
 <script src="../build/pdf.mjs" type="module"></script>
+<!-- START OF NEW JAVASCRIPT FOR FORCING DEFAULT ZOOM -->
+    <script>
+      // This script runs before viewer.mjs and overrides PDF.js's preferences
+      // by directly setting localStorage values.
+      // PDF.js reads these values on initialization.
+
+      // Force 'previousViewOnLoad' to false, so it doesn't remember the last zoom/scroll.
+      localStorage.setItem('pdfjs.previousViewOnLoad', 'false');
+
+      // Ensure 'defaultZoomValue' is set to 'page-width' as a fallback,
+      // though the URL parameter should take precedence.
+      localStorage.setItem('pdfjs.defaultZoomValue', 'page-width');
+    </script>
+    <!-- END OF NEW JAVASCRIPT -->
 
     <link rel="stylesheet" href="viewer.css">
       <!-- Start of Custom CSS for Minimal Viewer -->
