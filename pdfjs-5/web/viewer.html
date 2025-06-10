@@ -46,8 +46,8 @@ See https://github.com/adobe-type-tools/cmap-resources
       padding: 0 !important;
       width: 100% !important;
       height: 100% !important;
-      overflow-x: hidden !important;
-      overflow-y: auto !important;
+      overflow-x: hidden !important; /* Hide horizontal scroll */
+      overflow-y: auto !important;   /* Allow vertical scroll */
       overscroll-behavior: none !important; /* Prevents scroll chaining on some browsers */
     }
 
@@ -76,19 +76,23 @@ See https://github.com/adobe-type-tools/cmap-resources
         margin: 0 !important; /* Remove margins around individual pages */
         border: none !important; /* Remove borders around pages */
         box-shadow: none !important; /* Remove any shadows around pages */
-        pointer-events: none !important; /* Disables all mouse/touch interaction on the canvas */
+        /* KEY CHANGE: Removed pointer-events: none to allow text selection */
     }
 
-    /* Aggressive attempts to disable all user interaction within the iframe */
+    /* Aggressive attempts to disable unwanted interaction within the iframe */
     html, body {
-        overflow: hidden !important; /* Prevents scrolling within the iframe itself */
-        touch-action: none !important; /* Disables all touch gestures (pinch-to-zoom, pan) */
-        user-select: none !important; /* Disables text selection and often helps prevent unwanted pan/zoom */
-        -webkit-user-select: none !important; /* For Webkit browsers */
-        -moz-user-select: none !important; /* For Firefox */
-        -ms-user-select: none !important; /* For Edge/IE */
+        overflow-x: hidden !important; /* Hide horizontal scroll */
+        overflow-y: auto !important;   /* Allow vertical scroll */
+        touch-action: pan-y !important; /* KEY CHANGE: Allow vertical pan, disable others (pinch, horizontal pan) */
+        /* KEY CHANGE: Removed user-select: none to allow text selection */
+        /* Also explicitly set user-select back to auto/text to ensure it's enabled */
+        user-select: auto !important;
+        -webkit-user-select: auto !important;
+        -moz-user-select: auto !important;
+        -ms-user-select: auto !important;
     }
   </style>
+  <!-- End of Custom CSS -->
   <!-- End of Custom CSS -->
 
   <script src="viewer.mjs" type="module"></script>
