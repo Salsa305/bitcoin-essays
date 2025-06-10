@@ -32,6 +32,51 @@ See https://github.com/adobe-type-tools/cmap-resources
 <script src="../build/pdf.mjs" type="module"></script>
 
     <link rel="stylesheet" href="viewer.css">
+      <!-- Start of Custom CSS for Minimal Viewer -->
+    <style>
+      /* Ensure the outer container and main container start at the very top */
+      #outerContainer, #mainContainer {
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        margin: 0 !important;
+        padding: 0 !important;
+      }
+
+      /* Hide all UI elements except the core viewer area */
+      #toolbarContainer,
+      #sidebarContainer,
+      #secondaryToolbar,
+      #errorWrapper,
+      #loadingBar,
+      #overlayContainer, /* Hides dialogs like password prompt, print dialog */
+      #findbar { /* We are relying on browser's native Ctrl+F, so hide PDF.js's findbar */
+        display: none !important;
+      }
+
+      /* Adjust the viewer container to fill all available space */
+      #viewerContainer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        overflow: auto; /* Allows scrolling of the document */
+        /* Important: remove any default padding that might be around the PDF content itself */
+        padding: 0 !important;
+      }
+
+      /* Ensure the individual PDF pages (canvases) have no external margins and are centered */
+      #canvasContainer {
+        margin: 0 !important;
+        padding: 0 !important;
+        display: flex;
+        flex-direction: column; /* Stack pages vertically */
+        align-items: center; /* Center the PDF page horizontally within the viewer */
+      }
+    </style>
+    <!-- End of Custom CSS -->
 
   <script src="viewer.mjs" type="module"></script>
   </head>
