@@ -34,49 +34,61 @@ See https://github.com/adobe-type-tools/cmap-resources
     <link rel="stylesheet" href="viewer.css">
       <!-- Start of Custom CSS for Minimal Viewer -->
     <style>
-      /* Ensure the outer container and main container start at the very top */
-      #outerContainer, #mainContainer {
-        top: 0 !important;
-        left: 0 !important;
-        right: 0 !important;
-        bottom: 0 !important;
-        margin: 0 !important;
-        padding: 0 !important;
-      }
+    /* Global reset for containers to ensure no extra space */
+    #outerContainer, #mainContainer, #viewerContainer {
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      bottom: 0 !important;
+      margin: 0 !important;
+      padding: 0 !important;
+      width: 100% !important;
+      height: 100% !important;
+      overflow: auto !important; /* Keep scrolling for long documents */
+      overscroll-behavior: none; /* Prevents scroll chaining on some browsers */
+    }
 
-      /* Hide all UI elements except the core viewer area */
-      #toolbarContainer,
-      #sidebarContainer,
-      #secondaryToolbar,
-      #errorWrapper,
-      #loadingBar,
-      #overlayContainer, /* Hides dialogs like password prompt, print dialog */
-      #findbar { /* We are relying on browser's native Ctrl+F, so hide PDF.js's findbar */
-        display: none !important;
-      }
+    /* Hide all UI elements including toolbars, sidebars, findbar, etc. */
+    #toolbarContainer,
+    #sidebarContainer,
+    #secondaryToolbar,
+    #errorWrapper,
+    #loadingBar,
+    #overlayContainer,
+    #findbar,
+    #printServiceExtension { /* Hide print service prompt */
+      display: none !important;
+    }
 
-      /* Adjust the viewer container to fill all available space */
-      #viewerContainer {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        overflow: auto; /* Allows scrolling of the document */
-        /* Important: remove any default padding that might be around the PDF content itself */
-        padding: 0 !important;
-      }
+    /* Ensure the viewer's pages container is centered and has no extra margins */
+    #viewer { /* This is the element that holds the individual pages */
+        margin: 0 auto !important; /* Center the entire document horizontally */
+        width: 100% !important; /* Force the document to take full width */
+        max-width: none !important; /* Override any max-width limits */
+        padding: 0 !important; /* Remove internal padding */
+    }
 
-      /* Ensure the individual PDF pages (canvases) have no external margins and are centered */
-      #canvasContainer {
-        margin: 0 !important;
-        padding: 0 !important;
-        display: flex;
-        flex-direction: column; /* Stack pages vertically */
-        align-items: center; /* Center the PDF page horizontally within the viewer */
-      }
-    </style>
-    <!-- End of Custom CSS -->
+    /* Ensure individual PDF pages (canvases) fill their space and are centered */
+    .page {
+        margin: 0 !important; /* Remove margins around individual pages */
+        border: none !important; /* Remove borders around pages */
+        box-shadow: none !important; /* Remove any shadows around pages */
+        /* Disable pointer events to prevent accidental drag/zoom, if possible */
+        pointer-events: none !important;
+    }
+
+    /* Additional styles to prevent zoom/pan if the above doesn't fully work */
+    html, body {
+        overflow: hidden !important; /* Try to disable scrolling on the viewer HTML itself */
+        touch-action: none !important; /* Disable touch gestures like pinch-to-zoom */
+        user-select: none !important; /* Disable text selection (might affect Command+F, test carefully) */
+        -webkit-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+    }
+  </style>
+  <!-- End of Custom CSS -->
 
   <script src="viewer.mjs" type="module"></script>
   </head>
