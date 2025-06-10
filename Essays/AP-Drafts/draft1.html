@@ -2,55 +2,20 @@
 <html>
 <head>
   <title>Advocacy Project – Draft 1</title>
-  <style>
-    body {
-      display: flex;
-      flex-direction: column;
-      align-items: center; /* Centers items horizontally */
-      margin: 0; /* Remove default body margin */
-      padding: 20px; /* Add some padding around the content if desired */
-      background-color: #f0f0f0; /* Light grey background for the page, good for contrast */
-    }
-
-    h1 {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .pdf-container {
-      width: 8.5in; /* Set width based on typical essay paper size */
-      height: 11in; /* Set height based on typical essay paper size */
-      /* You might need to adjust these values slightly based on how your browser renders 'in' units */
-      /* Or use pixel values if you know the exact dimensions of your PDF:
-         width: 816px; /* For US Letter, 96 DPI */
-         height: 1056px; /* For US Letter, 96 DPI */
-      */
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Adds a subtle shadow to make it look like a floating page */
-      overflow: hidden; /* Important to hide any scrollbars if the embed tries to add them */
-      margin-bottom: 20px; /* Space below the PDF */
-    }
-
-    .pdf-container embed {
-      width: 100%;
-      height: 100%;
-      display: block; /* Ensures embed behaves like a block element */
-    }
-
-    p {
-      text-align: center;
-    }
-  </style>
+  <link rel="stylesheet" href="../../style.css">
 </head>
 <body>
   <h1>Advocacy Project – Draft 1</h1>
 
-  <div class="pdf-container">
-    <embed src="AP-Draft-1.pdf" type="application/pdf">
+  <div class="pdf-viewer-wrapper">
+    <iframe src="../../pdfjs-5/web/viewer.html?file=../../Essays/AP-Drafts/AP-Draft-1.pdf"></iframe>
   </div>
 
   <p>
+    <!-- Relative links within 'Essays/AP-Drafts/' -->
     <a href="AP-Draft-1.pdf" download>Download PDF</a> |
-    <a href="draft2.html">Draft 2</a> | <a href="final.html">Final Draft</a> |
+    <a href="draft2.html">Draft 2</a> |
+    <a href="final.html">Final Draft</a> |
     <a href="../../index.html">Back to Home</a>
   </p>
 </body>
